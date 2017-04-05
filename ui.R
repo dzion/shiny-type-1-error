@@ -16,7 +16,7 @@ shinyUI(fluidPage(
                         value = 100),
             sliderInput("sample_size",
                          "Size of samples:",
-                         min = 100,
+                         min = 50,
                          max = 1000,
                          value = 100),
             actionButton("goButton", "Draw new data")
