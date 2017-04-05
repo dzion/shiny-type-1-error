@@ -10,7 +10,7 @@ shinyUI(fluidPage(
     sidebarLayout(
         sidebarPanel(
             sliderInput("simrun",
-                        "Number of samples:",
+                        "Number of Hypotheses:",
                         min = 1,
                         max = 150,
                         value = 100),
@@ -19,7 +19,7 @@ shinyUI(fluidPage(
                          min = 100,
                          max = 1000,
                          value = 100),
-            actionButton("goButton", "Draw new samples")
+            actionButton("goButton", "Draw new data")
         ),
         
         # Show a plot of the generated distribution
