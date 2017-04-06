@@ -7,8 +7,8 @@ shinyServer(function(input, output) {
         
         input$goButton
         pvals <- NULL
-        set.seed(78978 +input$goButton)
-        y <-  rnorm(input$sample_size, 50, 10)
+        set.seed(78932 +input$goButton) ##2329 , 78978 # 78932
+        y <-  rnorm(input$sample_size, 0, 1)
         for (i in seq(1:input$simrun)){
               ##2329 , 78978 # 78932
             x <- sample(c(0,1), input$sample_size, replace=T)
@@ -17,6 +17,7 @@ shinyServer(function(input, output) {
         
         psort <- sort(pvals)
         p.data <- as.data.frame(psort)
+        p.data$psort <- p.adjust(p.data$psort, method = input$correction)
         p.data$nr <- seq_along(psort)
         p.data$color <- ifelse(p.data$psort <0.01, "p<0.01",
                                          ifelse(p.data$psort <0.05, "p<0.05",

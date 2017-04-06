@@ -19,7 +19,10 @@ shinyUI(fluidPage(
                          min = 50,
                          max = 1000,
                          value = 100),
-            actionButton("goButton", "Draw new data")
+            actionButton("goButton", "Draw new data"),
+            selectInput("correction", label = h3("Correction"), 
+                        choices = list("None" = "none", "Bonferroni" = "bonferroni", "Holm" = "holm"), 
+                        selected = "none")
         ),
         
         # Show a plot of the generated distribution
