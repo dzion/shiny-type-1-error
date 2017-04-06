@@ -7,9 +7,10 @@ shinyServer(function(input, output) {
         
         input$goButton
         pvals <- NULL
+        set.seed(78978 +input$goButton)
         y <-  rnorm(input$sample_size, 50, 10)
         for (i in seq(1:input$simrun)){
-          #  set.seed(78978 + i ) #+input$goButton)  ##2329 , 78978 # 78932
+              ##2329 , 78978 # 78932
             x <- sample(c(0,1), input$sample_size, replace=T)
             pvals <- rbind(pvals,summary(lm(y~x))$coefficients[2,4])
         }
@@ -17,9 +18,9 @@ shinyServer(function(input, output) {
         psort <- sort(pvals)
         p.data <- as.data.frame(psort)
         p.data$nr <- seq_along(psort)
-        p.data$color <- ifelse(p.data$psort <0.01, "1%",
-                                         ifelse(p.data$psort <0.05, "5%",
-                                                p.data$color <- ifelse(p.data$psort <0.1, "10%", "p>0.1")))
+        p.data$color <- ifelse(p.data$psort <0.01, "p<0.01",
+                                         ifelse(p.data$psort <0.05, "p<0.05",
+                                                p.data$color <- ifelse(p.data$psort <0.1, "p<0.1", "p>0.1")))
         
         
         ggplot(p.data, aes(x=nr, y=psort, color = color)) + 
