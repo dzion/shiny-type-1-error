@@ -29,14 +29,14 @@ shinyServer(function(input, output) {
             scale_colour_discrete(drop=TRUE,
                                   limits = levels(p.data$color)) +
             theme_bw() + 
-            labs(color = "P-Value Colours",
-                 x = "Hypotheses Number",
-                 y = "P-Value", 
+            labs(color = "p-value colours",
+                 x = "Hypothesis",
+                 y = "p-value", 
                  title = "All hypotheses ordered by p-value") +
             scale_y_continuous( limits = c(0, 1)) +
-            geom_hline(aes(yintercept = 0.05), color = "#000099") + 
-            geom_hline(aes(yintercept =  0.1), color = "#990099") + 
-            geom_hline(aes(yintercept = 0.01), color = "#009999")
+            geom_hline(aes(yintercept = 0.05), color = "#999999") + 
+            geom_hline(aes(yintercept =  0.1), color = "#999999") + 
+            geom_hline(aes(yintercept = 0.01), color = "#999999")
 
     })
 })

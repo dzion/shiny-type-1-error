@@ -21,7 +21,9 @@ shinyUI(fluidPage(
                          value = 100),
             actionButton("goButton", "Draw new data"),
             selectInput("correction", label = h3("Correction"), 
-                        choices = list("None" = "none", "Bonferroni" = "bonferroni", "Holm" = "holm"), 
+                        choices = list("None" = "none", "Bonferroni" = "bonferroni", 
+                                       "Holm" = "holm", "Benjamini & Yekutieli" = "BY",
+                                       "Benjamini & Hochberg " = "BH"), 
                         selected = "none")
         ),
         
